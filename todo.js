@@ -11,8 +11,18 @@ function renderList () {
 
 }
 
-function markTaskCompleted (taskId) {
-    
+function toggleTask (taskId) {
+    const task = tasks.filter(function (task) {
+        return task.id === taskId;
+    });
+    if(task.length > 0){
+        const currentTask = task[0];
+        currentTask.done = !currentTask.done;
+        renderList();
+        showNotification('task toggled successfully');
+        return;
+    }
+   
 }
 
 function deleteTask (taskId) {
