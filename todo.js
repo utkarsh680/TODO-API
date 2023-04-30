@@ -11,10 +11,17 @@ function renderList () {
 
 }
 
-function markTaskCompleted (taskId) {}
+function markTaskCompleted (taskId) {
+    
+}
 
 function deleteTask (taskId) {
-    
+    const newTasks = tasks.filter(function (task) {
+        return task.id !== taskId;
+        });
+        tasks = newTasks;
+        renderList();
+        showNotification('task deleted successfully');
 }
 
 function addTask (task) {
