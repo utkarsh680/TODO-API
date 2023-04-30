@@ -18,7 +18,14 @@ function deleteTask (taskId) {
 }
 
 function addTask (task) {
-    
+    if(task){
+        tasks.push(task);
+        console.log(tasks);
+        renderList();
+        showNotification('task added successfully');
+        return;
+    }
+    showNotification('task can not be added');
 
 }
 
