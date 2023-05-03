@@ -4,18 +4,27 @@ const tasksList = document.getElementById("list");
 const addTaskInput = document.getElementById("add");
 const taskCounter = document.getElementById("tasks-counter");
 
-function fetchTodos (){
+ async function fetchTodos (){
   // GET request using fetch()
-  fetch('https://jsonplaceholder.typicode.com/todos')
-  .then(function (response) {
-    return response.json();
-  }).then(function (data) {
-    tasks = data.slice(0, 10);
-    renderList();
-  })
-  .catch(function (error) { 
+  // fetch('https://jsonplaceholder.typicode.com/todos')
+  // .then(function (response) {
+  //   return response.json();
+  // }).then(function (data) {
+  //   tasks = data.slice(0, 10);
+  //   renderList();
+  // })
+  // .catch(function (error) { 
+  //   console.log('Request failed', error);
+  // });
+
+  try{
+  const response = await fetch('https://jsonplaceholder.typicode.com/todos');
+  const data = await response.json();
+  tasks = data.slice(0, 10);
+  renderList();
+  }catch{
     console.log('Request failed', error);
-  });
+  }
 }
 
 // add task to dom function
@@ -70,11 +79,31 @@ function deleteTask(taskId) {
 // add task function
 function addTask(task) {
   if (task) {
-    tasks.push(task);
-    console.log(tasks);
-    renderList();
-    showNotification("task added successfully");
-    return;
+  // fetch('https://jsonplaceholder.typicode.com/todos',{
+  //   method: 'POST',
+  //   headers: {
+  //     'Content-Type': 'application/json',
+  //   },
+  //   body: JSON.stringify(task),
+
+  // })
+  // .then(function (response) {
+  //   return response.json();
+  // }).then(function (data) {
+  //   console.log('Success:', data);
+  //   tasks.push(task);
+  //   console.log(tasks);
+  //   renderList();
+  //   showNotification("task added successfully");
+  // })
+  // .catch(function (error) { 
+  //   console.log('Request failed', error);
+  // });
+
+  tasks.push(task);
+  renderList();
+  showNotification("task added successfully");
+  return;  
   }
   showNotification("task can not be added");
 }
