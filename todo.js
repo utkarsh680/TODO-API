@@ -1,21 +1,36 @@
-const tasks = [];
+let tasks = [];
 
 const tasksList = document.getElementById("list");
 const addTaskInput = document.getElementById("add");
 const taskCounter = document.getElementById("tasks-counter");
 
-console.log(taskCounter);
+function fetchTodos (){
+  // GET request using fetch()
+  fetch('https://jsonplaceholder.typicode.com/todos')
+  .then(function (response) {
+    return response.json();
+  }).then(function (data) {
+    tasks = data.slice(0, 10);
+    renderList();
+  })
+  .catch(function (error) { 
+    console.log('Request failed', error);
+  });
+}
 
+// add task to dom function
 function addTaskToDom(task) {
   const li = document.createElement("li");
   li.innerHTML = `
-    <input type="checkbox" id="${task.id}" ${task.done ? "checked" : ""}
+    <input type="checkbox" id="${task.id}" ${task.completed ? "checked" : ""}
     class="custom-checkbox">
-    <label for="${task.id}">${task.text}</label>
-    <img src="bin.svg" class="delete" data-id="${task.id}">
+    <label for="${task.id}">${task.title}</label>
+    <img src="https://cdn-icons-png.flaticon.com/512/6861/6861362.png" class="delete" data-id="${task.id}">
 `;
     tasksList.appendChild(li);
 }
+
+// render list function
 function renderList() {
   tasksList.innerHTML = "";
 
@@ -25,28 +40,34 @@ function renderList() {
   taskCounter.innerText = tasks.length;
 }
 
+// toggle task function
 function toggleTask(taskId) {
+  console.log(typeof(taskId));
   const task = tasks.filter(function (task) {
-    return task.id === taskId;
+    return task.id === Number(taskId);
   });
   if (task.length > 0) {
     const currentTask = task[0];
-    currentTask.done = !currentTask.done;
+    currentTask.completed = !currentTask.completed;
     renderList();
     showNotification("task toggled successfully");
     return;
   }
+  showNotification("task can not be toggled");
 }
 
+// delete task function
 function deleteTask(taskId) {
   const newTasks = tasks.filter(function (task) {
-    return task.id !== taskId;
-  });
+    return task.id !== Number(taskId);
+  })
   tasks = newTasks;
   renderList();
   showNotification("task deleted successfully");
+ 
 }
 
+// add task function
 function addTask(task) {
   if (task) {
     tasks.push(task);
@@ -58,9 +79,12 @@ function addTask(task) {
   showNotification("task can not be added");
 }
 
+// show notification
 function showNotification(text) {
   alert(text);
 }
+
+// handle input keypress
 
 function handleInputKeypress(e) {
   if (e.key === "Enter") {
@@ -72,13 +96,34 @@ function handleInputKeypress(e) {
       return;
     }
     const task = {
-      text,
-      id: Date.now().toString(),
-      done: false,
+      title:text,
+      id: Date.now(),
+      completed: false,
     };
     e.target.value = "";
     addTask(task);
   }
 }
+// handle click listener
+function handleClickListener(e) {
+    const target = e.target;
+    console.log(target);
 
-addTaskInput.addEventListener("keyup", handleInputKeypress);
+    if (target.className === 'custom-checkbox'){
+        const taskId = target.id;
+        toggleTask(taskId);
+        return;
+    }else if(target.className === 'delete'){
+        const taskId = target.dataset.id;
+        deleteTask(taskId);
+        return;
+    }
+}
+
+function initializeApp(){
+  fetchTodos();
+  addTaskInput.addEventListener("keyup", handleInputKeypress);
+  document.addEventListener('click', handleClickListener);
+}
+
+initializeApp();
