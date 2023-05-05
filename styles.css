@@ -1,15 +1,43 @@
 * {
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+    
+  }
+  body{
+  background-image: url(https://cdn.pixabay.com/photo/2017/03/25/17/55/colorful-2174045_960_720.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  }
+  .todo-list-deco{
+    position: absolute;
+    left:43.9% ;
+    height:50px;
+    width: 80px;
+    border-radius: 60%;
+    background-color: rgba(197, 219, 119, 0.5);
+    rotate: 45deg;
+    box-shadow: inset 4px 5px 4px  rgba(54, 54, 54, 0.4), inset -4px -5px 4px  rgba(228, 228, 19, 0.4);
+
+  }
+  h1{
+    position: relative;
+    color: rgb(7, 230, 134);
+    margin-top: 40px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
   #container {
     width: 500px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
   }
   ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    color: rgb(54, 54, 49);
+  
     /* border: 1px solid #e5e5e5; */
   }
   ul li {
@@ -21,7 +49,7 @@
     align-items: center;
   }
   ul li:hover {
-    background: #f3f3f3;
+    background: rgba(245, 235, 235, 0.5);
   }
   #list input {
     padding: 0;
@@ -70,11 +98,11 @@
   }
   .delete {
     height: 28px;
-      padding: 5px 0px;
-      border-radius: 3px;
+    padding: 5px 5px;
+    border-radius: 20px;
   }
   .delete:hover {
-    background: #f2f2f2;
+    background: rgba(8, 8, 8, 0.5);
     cursor: pointer;
   }
   h1 {
@@ -86,11 +114,52 @@
       font-size: 15px;
       padding: 11px;
       border: 1px solid #f3f3f3;
-      margin-bottom: 3px;
+     margin-top:30px;
+      border-radius: 20px;
   }
   #total-tasks {
-    margin-bottom: 20px;
-    font-size: 13px;
-      margin-left: 2px;
-      color: gray;
+    font-size: 20px;
+    margin-left: 2px;
+    color: rgb(235, 235, 179);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
+  #tasks-counter{
+  font-size: 30px;
+  margin-top: 10px;
+  height: 50px;
+  width: 50px;
+  color: rgb(187, 240, 12);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: rgba(235, 223, 5, 0.2);
+  box-shadow: inset 4px 5px 4px  rgba(236, 236, 23, 0.4), inset -4px -5px 4px  rgba(228, 228, 19, 0.4);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+  .list-container{
+    background-color: rgba(0, 0, 0, 0.2);
+    height: 500px;
+    width: 500px;
+    overflow: scroll;
+
+    border-radius: 20px; 
+    margin-top: 30px;
+  }
+  .list-container::-webkit-scrollbar {
+     display: none;
+  }
+  label{
+    white-space: nowrap;  
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .count-section{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    
+  }
+ 
