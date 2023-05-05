@@ -1,31 +1,36 @@
 <html>
-    <head>
-        <title>Todo</title>
-        <link rel="stylesheet" href="styles.css">
-    </head>
-    <body>
-    <div class="todo-list-deco">
-    </div>
-        <h1>
-            Todo List App
-        </h1>
-   
-        <div id ='container'>
-            <input placeholder="Add a task" class="add-task" id="add" data-helloWord ='asdasdas'/>
-            <div class = 'count-section'><span id="total-tasks">Total tasks &nbsp;</span><div id="tasks-counter">0</div></div>
-            
-            <div class="list-container">
-                <ul id="list">
-                    <!-- <li>
+  <head>
+    <title>Todo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css">
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="todo-list-deco"></div>
+    <h1>Todo List App</h1>
+
+    <div id="container">
+      <input
+        placeholder="Add a task"
+        class="add-task"
+        id="add"
+        data-helloWord="asdasdas"
+      />
+      <div class="count-section">
+        <span id="total-tasks">Total tasks &nbsp;</span>
+        <div id="tasks-counter">0</div>
+      </div>
+
+      <div class="list-container">
+        <ul id="list">
+          <!-- <li>
                         <input type="checkbox" id="task1" data-id="12" class="custom-checkbox">
                         <label for="task1">Buy groceries</label>
                         <img src="bin.svg" class="delete" data-id="12">
                     </li> -->
-                </ul>
-            </div>
-      
-        </div>
-        <script src="todo.js"></script>
-        
-    </body>
+        </ul>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js"></script>
+    <script src="todo.js"></script>  
+  </body>
 </html>

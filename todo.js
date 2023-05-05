@@ -60,10 +60,23 @@
       const currentTask = task[0];
       currentTask.completed = !currentTask.completed;
       renderList();
-      showNotification("task toggled successfully");
+      iziToast.show({
+        title: '✔',
+        message: 'Task toggled successfully',
+        position: 'topRight',
+        color: 'green',
+        titleColor: 'green',
+        timeout: 1200,    
+      })
       return;
     }
-    showNotification("task can not be toggled");
+    iziToast.show({
+      title: '❌',
+      message: 'Task can not be toggled',
+      position: 'topRight',
+      titleColor: 'red',
+      color: 'red',
+    })
   }
   
   // delete task function
@@ -73,7 +86,14 @@
     })
     tasks = newTasks;
     renderList();
-    showNotification("task deleted successfully");
+    iziToast.show({
+      title: '✔',
+      message: 'Task deleted successfully',
+      position: 'topRight',
+      color: 'green',
+      titleColor: 'green',
+      timeout: 1200,    
+    })
    
   }
   
@@ -103,16 +123,25 @@
   
     tasks.push(task);
     renderList();
-    showNotification("task added successfully");
+    iziToast.show({
+      title: '✔',
+      message: 'Task added successfully',
+      position: 'topRight',
+      color: 'green',
+      titleColor: 'green',
+      timeout: 1200,    
+    })
     return;  
     }
-    showNotification("task can not be added");
+    iziToast.show({
+      title: '❌',
+      message: 'Task can not be added',
+      position: 'topRight',
+      titleColor: 'red',
+      color: 'red',
+    })
   }
   
-  // show notification
-  function showNotification(text) {
-    alert(text);
-  }
   
   // handle input keypress
   
@@ -122,7 +151,14 @@
       console.log("text", text);
   
       if (!text) {
-        showNotification("task cant be empty");
+        iziToast.show({
+          title: '❌',
+          message: 'Task can not be empty',
+          position: 'topRight',
+          titleColor: 'red',
+          color: 'red',
+          timeout:1200
+        })
         return;
       }
       const task = {
