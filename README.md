@@ -1,7 +1,7 @@
 # Todo list app
 A todo list app
 
-<h1> Click here -> </h1><p>https://64608d48c3b7fa5af66ec79c--cozy-sopapillas-abf22c.netlify.app/</p>
+<h1> Click here -> https://64608d48c3b7fa5af66ec79c--cozy-sopapillas-abf22c.netlify.app/</h1>
 
 
 ![todo](https://user-images.githubusercontent.com/102253404/236466209-4bda9652-ea9a-4641-92de-b7e7985b5b2c.PNG)
